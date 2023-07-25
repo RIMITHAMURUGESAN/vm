@@ -1,0 +1,781 @@
+1)Take Input Level Wise of Binary Tree:-
+
+import java.io.*;
+import java.util.*;
+
+class Node
+{
+    Node left;
+    int data;
+    Node right;
+    Node(int x)
+    {
+        data=x;
+        left=null;
+        right=null;
+    }
+}
+public class Solution {
+    static Node head;
+    
+    static void insert(Scanner sc)
+    {
+        Queue<Node> queue = new LinkedList<>();
+        int x=sc.nextInt();
+        if(x!=-1)
+        {
+            head=new Node(x);
+            queue.add(head);
+        }
+        // Node newnode=new Node(x);
+        // temp.data=x;
+        //System.out.print(temp.data+" ");
+        while(!queue.isEmpty())
+        {
+        Node temp=queue.poll();
+        x=sc.nextInt();
+        if(x!=-1)
+        {
+            temp.left=new Node(x);
+            queue.add(temp.left);
+        }
+        int y=sc.nextInt();
+        if(y!=-1)
+        {  
+            temp.right=new Node(y);
+            queue.add(temp.right);
+        }
+        }
+        return;
+    }
+    static void inorder(Node temp)
+    {
+        if(temp==null)
+        {
+            return;
+        }
+        inorder(temp.left);
+        System.out.print(temp.data+" ");
+        inorder(temp.right);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        insert(sc);
+        inorder(head);
+    }
+}
+
+2)Count Number of Nodes in tree:-
+
+import java.io.*;
+import java.util.*;
+
+class Node
+{
+    Node left;
+    int data;
+    Node right;
+    Node(int x)
+    {
+        data=x;
+        left=null;
+        right=null;
+    }
+}
+public class Solution {
+    static Node head;
+    
+    static int insert(Scanner sc)
+    {
+        Queue<Node> queue = new LinkedList<>();
+        int c=0;
+        int x=sc.nextInt();
+        if(x!=-1)
+        {
+            head=new Node(x);
+            queue.add(head);
+            c++;
+        }
+        // Node newnode=new Node(x);
+        // temp.data=x;
+        //System.out.print(temp.data+" ");
+        while(!queue.isEmpty())
+        {
+        Node temp=queue.poll();
+        x=sc.nextInt();
+        if(x!=-1)
+        {
+            temp.left=new Node(x);
+            queue.add(temp.left);
+            c++;
+        }
+        int y=sc.nextInt();
+        if(y!=-1)
+        {  
+            temp.right=new Node(y);
+            queue.add(temp.right);
+            c++;
+        }
+        }
+        return c;
+    }
+    static void inorder(Node temp)
+    {
+        if(temp==null)
+        {
+            return;
+        }
+        inorder(temp.left);
+        System.out.print(temp.data+" ");
+        inorder(temp.right);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println(insert(sc));
+    }
+}
+
+3)Preorder Traversal 2:-
+
+import java.io.*;
+import java.util.*;
+
+class Node
+{
+    Node left;
+    int data;
+    Node right;
+    Node(int x)
+    {
+        data=x;
+        left=null;
+        right=null;
+    }
+}
+public class Solution {
+    static Node head;
+    
+    static void insert(Scanner sc)
+    {
+        Queue<Node> queue = new LinkedList<>();
+        int x=sc.nextInt();
+        if(x!=-1)
+        {
+            head=new Node(x);
+            queue.add(head);
+        }
+        // Node newnode=new Node(x);
+        // temp.data=x;
+        //System.out.print(temp.data+" ");
+        while(!queue.isEmpty())
+        {
+        Node temp=queue.poll();
+        x=sc.nextInt();
+        if(x!=-1)
+        {
+            temp.left=new Node(x);
+            queue.add(temp.left);
+        }
+        int y=sc.nextInt();
+        if(y!=-1)
+        {  
+            temp.right=new Node(y);
+            queue.add(temp.right);
+        }
+        }
+        return;
+    }
+    static void inorder(Node temp)
+    {
+        if(temp==null)
+        {
+            return;
+        }
+        System.out.print(temp.data+" ");
+        inorder(temp.left);
+        inorder(temp.right);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        insert(sc);
+        inorder(head);
+    }
+}
+
+4)Diameter of Binary tree:-
+
+import java.io.*;
+import java.util.*;
+
+class Node
+{
+    Node left;
+    int data;
+    Node right;
+    Node(int x)
+    {
+        data=x;
+        left=null;
+        right=null;
+    }
+}
+public class Solution {
+    static Node head;
+    
+    static int insert(Scanner sc)
+    {
+        Queue<Node> queue = new LinkedList<>();
+        int c=0;
+        int x=sc.nextInt();
+        if(x!=-1)
+        {
+            head=new Node(x);
+            queue.add(head);
+            c++;
+        }
+        while(!queue.isEmpty())
+        {
+        Node temp=queue.poll();
+        x=sc.nextInt();
+        c++;
+        if(x!=-1)
+        {
+            temp.left=new Node(x);
+            queue.add(temp.left);
+            
+        }
+        int y=sc.nextInt();
+        if(y!=-1)
+        {  
+            temp.right=new Node(y);
+            queue.add(temp.right);
+
+        }
+        }
+        return c;
+    }
+    static void inorder(Node temp)
+    {
+        if(temp==null)
+        {
+            return;
+        }
+        inorder(temp.left);
+        System.out.print(temp.data+" ");
+        inorder(temp.right);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=insert(sc);
+        // System.out.println(n);
+        int l=(int)(Math.log(n) / Math.log(2));
+        System.out.println(n-l-1);
+    }
+}
+
+5)Right View Of Binary Tree:-
+
+
+import java.io.*;
+import java.util.*;
+
+class Node
+{
+    Node left;
+    int data;
+    Node right;
+    Node(int x)
+    {
+        data=x;
+        left=null;
+        right=null;
+    }
+}
+public class Solution {
+    static Node head;
+    
+    static void insert(Scanner sc)
+    {
+        Queue<Node> queue = new LinkedList<>();
+        int x=sc.nextInt();
+        if(x!=-1)
+        {
+            head=new Node(x);
+            queue.add(head);
+        }
+        // Node newnode=new Node(x);
+        // temp.data=x;
+        //System.out.print(temp.data+" ");
+        while(!queue.isEmpty())
+        {
+        Node temp=queue.poll();
+        x=sc.nextInt();
+        if(x!=-1)
+        {
+            temp.left=new Node(x);
+            queue.add(temp.left);
+        }
+        int y=sc.nextInt();
+        if(y!=-1)
+        {  
+            temp.right=new Node(y);
+            queue.add(temp.right);
+        }
+        }
+        return;
+    }
+    static void inorder(Node temp)
+    {
+        if(temp==null)
+        {
+            return;
+        }
+        System.out.print(temp.data+" ");
+        if(temp.right==null)
+            inorder(temp.left);
+        else
+            inorder(temp.right);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        insert(sc);
+        inorder(head);
+    }
+}
+
+6)Serialize and Deserialize of Binary tree:-
+
+import java.io.*;
+import java.util.*;
+
+class Node
+{
+    Node left;
+    int data;
+    Node right;
+    Node(int x)
+    {
+        data=x;
+        left=null;
+        right=null;
+    }
+}
+public class Solution {
+    static Node head;
+    
+    static void insert(Scanner sc)
+    {
+        Queue<Node> queue = new LinkedList<>();
+        int x=sc.nextInt();
+        if(x!=-1)
+        {
+            head=new Node(x);
+            queue.add(head);
+        }
+        // Node newnode=new Node(x);
+        // temp.data=x;
+        //System.out.print(temp.data+" ");
+        while(!queue.isEmpty())
+        {
+        Node temp=queue.poll();
+        x=sc.nextInt();
+        if(x!=-1)
+        {
+            temp.left=new Node(x);
+            queue.add(temp.left);
+        }
+        int y=sc.nextInt();
+        if(y!=-1)
+        {  
+            temp.right=new Node(y);
+            queue.add(temp.right);
+        }
+        }
+        return;
+    }
+    static void inorder()
+    {
+        Queue<Node> queue = new LinkedList<>();
+        if(head==null)
+        {
+            return;
+        }
+        // Node newnode=new Node(x);
+        // temp.data=x;
+        System.out.print(head.data+" ");
+        queue.add(head);
+        while(!queue.isEmpty())
+        {
+        Node temp=queue.poll();
+        if(temp.left!=null)
+        {
+            System.out.print(temp.left.data+" ");
+            queue.add(temp.left);
+        }
+        else
+            System.out.print(-1+" "); 
+        if(temp.right!=null)
+        {  
+            System.out.print(temp.right.data+" ");
+            queue.add(temp.right);
+        }
+        else
+            System.out.print(-1+" ");
+        }
+        return;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        insert(sc);
+        inorder();
+    }
+}
+
+7)Node without sibling:-
+
+import java.io.*;
+import java.util.*;
+
+class Node
+{
+    Node left;
+    int data;
+    Node right;
+    Node(int x)
+    {
+        data=x;
+        left=null;
+        right=null;
+    }
+}
+public class Solution {
+    static Node head;
+
+    static int insert(Scanner sc)
+    {
+        Queue<Node> queue = new LinkedList<>();
+        int c=0;
+        int x=sc.nextInt();
+        if(x!=-1)
+        {
+            head=new Node(x);
+            queue.add(head);
+        }
+        // Node newnode=new Node(x);
+        // temp.data=x;
+        //System.out.print(temp.data+" ");
+        while(!queue.isEmpty())
+        {
+        Node temp=queue.poll();
+        x=sc.nextInt();
+        if(x!=-1)
+        {
+            temp.left=new Node(x);
+            queue.add(temp.left);
+        }
+        int y=sc.nextInt();
+        if(y!=-1)
+        {  
+            temp.right=new Node(y);
+            queue.add(temp.right);
+        }
+        }
+        return c;
+    }
+    static void inorder(Node temp)
+    {
+        if(temp==null)
+            return;
+        if(temp.left==null&&temp.right!=null)
+        {
+            System.out.print(temp.right.data+" ");
+        }
+        if(temp.right==null&&temp.left!=null)
+        {
+            System.out.print(temp.left.data+" ");
+        }
+        inorder(temp.left);
+        inorder(temp.right);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        insert(sc);
+        inorder(head);
+    }
+}
+
+8)Search In BST:-
+
+import java.util.Scanner;
+
+class Node {
+    int data;
+    Node left;
+    Node right;
+
+    Node(int x) {
+        data = x;
+        left = right = null;
+    }
+}
+public class Solution {
+    public static void main(String[] args) {
+        Node head = null;
+        int choice;
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t-- > 0) {
+            int x = sc.nextInt();
+            Node new_node = new Node(x);
+            head=insertNode(new_node,head);
+        }
+        int x2 = sc.nextInt();
+        boolean found = search(x2, head);
+        System.out.println(found);
+    }
+
+    static Node insertNode(Node pre, Node temp) {
+        if (temp == null) {
+            return pre;
+        }
+        if (temp.data >= pre.data) {
+            temp.left = insertNode(pre, temp.left);
+        } else {
+            temp.right = insertNode(pre, temp.right);
+        }
+        return temp;
+    }
+
+    static boolean search(int x, Node temp) {
+        if (temp == null) {
+            return false;
+        }
+        if (x == temp.data) {
+            return true;
+        }
+        if (x < temp.data) {
+            return search(x, temp.left);
+        }
+        return search(x, temp.right);
+    }
+}
+
+9)Check If Binary Tree is BST or not:-
+
+
+import java.io.*;
+import java.util.*;
+
+class Node {
+    Node left;
+    int data;
+    Node right;
+    
+    Node(int x) {
+        data = x;
+        left = null;
+        right = null;
+    }
+}
+
+public class Solution {
+    static Node head;
+    
+    static int insert(Scanner sc) {
+        Queue<Node> queue = new LinkedList<>();
+        int c = 0;
+        int x = sc.nextInt();
+        
+        if (x != -1) {
+            head = new Node(x);
+            queue.add(head);
+            c++;
+        }
+        
+        while (!queue.isEmpty()) {
+            Node temp = queue.poll();
+            x = sc.nextInt();
+            
+            if (x != -1) {
+                temp.left = new Node(x);
+                queue.add(temp.left);
+                c++;
+            }
+            
+            int y = sc.nextInt();
+            
+            if (y != -1) {  
+                temp.right = new Node(y);
+                queue.add(temp.right);
+                c++;
+            }
+        }
+        
+        return c;
+    }
+    
+    static boolean checkBST(Node temp) {
+        if (temp == null) {
+            return true;
+        }
+        
+        if (temp.left != null) {
+            if (temp.left.data >= temp.data) {
+                return false;
+            }
+            
+            if (!checkBST(temp.left)) {
+                return false;
+            }
+        }
+        
+        if (temp.right != null) {
+            if (temp.right.data < temp.data) {
+                return false;
+            }
+            
+            if (!checkBST(temp.right)) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        insert(sc);
+        System.out.println(checkBST(head));
+    }
+}
+
+10)Construct BST from a sorted array:-
+
+import java.util.Scanner;
+
+class Node {
+    int data;
+    Node left;
+    Node right;
+
+    Node(int x) {
+        data = x;
+        left = right = null;
+    }
+}
+
+public class Solution {
+    static Node head;
+    public static void main(String[] args) {
+        int choice;
+        Scanner sc = new Scanner(System.in);
+        int i,t = sc.nextInt();
+        int[] a=new int[t];
+        for(i=0;i<t;i++)
+        {
+            a[i]=sc.nextInt();
+        }
+        rec(0,t-1,a);
+        display(head);
+        sc.close();
+    }
+
+    static Node insertNode(Node pre, Node temp) {
+        if (temp == null) {
+            return pre;
+        }
+        if (temp.data >= pre.data) {
+            temp.left = insertNode(pre, temp.left);
+        } else {
+            temp.right = insertNode(pre, temp.right);
+        }
+        return temp;
+    }
+      static void rec(int l,int r,int a[])
+        {
+            if(l>r)
+            {
+                return;
+            }
+            Node new_node = new Node(a[(l+r)/2]);
+            head = insertNode(new_node, head);
+            rec(l,(int)((l+r)/2-1),a);
+            rec((int)((l+r)/2+1),r,a);
+        }
+
+    static void display(Node temp) {
+        if (temp == null) {
+            return;
+        }
+        System.out.print(temp.data + " ");
+        display(temp.left);
+        display(temp.right);
+        
+    }
+}
+
+
+11)BST to Sorted LL:-
+
+import java.io.*;
+import java.util.*;
+
+class Node
+{
+    Node left;
+    int data;
+    Node right;
+    Node(int x)
+    {
+        data=x;
+        left=null;
+        right=null;
+    }
+}
+public class Solution {
+    static Node head;
+    
+static Node insertNode(Node pre, Node temp) {
+        if (temp == null) {
+            return pre;
+        }
+        if (temp.data >= pre.data) {
+            temp.left = insertNode(pre, temp.left);
+        } else {
+            temp.right = insertNode(pre, temp.right);
+        }
+        return temp;
+    }
+    static void inorder(Node temp)
+    {
+        if(temp==null)
+        {
+            return;
+        }
+        inorder(temp.left);
+        System.out.print(temp.data+" ");
+        inorder(temp.right);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int i,t=sc.nextInt();
+        for(i=0;i<t;i++)
+        {
+            int x = sc.nextInt();
+            Node new_node = new Node(x);
+            head = insertNode(new_node, head);
+        }
+        inorder(head);
+    }
+}
+
+
+
